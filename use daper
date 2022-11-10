@@ -1,0 +1,5 @@
+using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["BEDConnectionString"].ConnectionString))
+            {
+                CourseList = db.Query<Observation>("USP_BED_ObservationRejection_Reports", queryParameters, commandType: CommandType.StoredProcedure).ToList();
+
+            }
