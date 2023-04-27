@@ -1,3 +1,17 @@
+List<Observation> CourseList = new List<Observation>();
+            var queryParameters = new DynamicParameters();
+            queryParameters.Add("@Action", "A");
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["BEDConnectionString"].ConnectionString))
+            {
+                CourseList = db.Query<Observation>("USP_BED_Statewidemeritlist", queryParameters, commandType: CommandType.StoredProcedure).ToList();
+
+            }
+
+
+
+
+
+
 using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["BEDConnectionString"].ConnectionString))
             {
                 CourseList = db.Query<Observation>("USP_BED_ObservationRejection_Reports", queryParameters, commandType: CommandType.StoredProcedure).ToList();
